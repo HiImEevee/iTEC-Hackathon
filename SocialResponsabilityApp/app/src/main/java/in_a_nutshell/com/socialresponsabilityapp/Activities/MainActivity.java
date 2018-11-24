@@ -10,16 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 
 import in_a_nutshell.com.socialresponsabilityapp.Adapters.CustomRecyclerViewAdapter;
 import in_a_nutshell.com.socialresponsabilityapp.Models.AuthorizationModel;
@@ -28,7 +20,6 @@ import in_a_nutshell.com.socialresponsabilityapp.Models.UserModel;
 import in_a_nutshell.com.socialresponsabilityapp.R;
 import in_a_nutshell.com.socialresponsabilityapp.SocialResponsabilityApp;
 import in_a_nutshell.com.socialresponsabilityapp.Utils.ApiUtils;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -103,17 +94,18 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    private synchronized void initializeUser() {
+    private void initializeUser() {
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String userEmail = mPreferences.getString("email", "");
-        String userId = mPreferences.getString("id", "");
-        String accessToken = mPreferences.getString("token", "");
+        String userEmail = mPreferences.getString(getString(R.string.preferences_email), "");
+        String userId = mPreferences.getString(getString(R.string.preferences_id), "");
+        String accessToken = mPreferences.getString(getString(R.string.preferences_token), "");
         Log.d(TAG, "initializeUser: " + userId + ' ' + userEmail + ' ' + accessToken);
         if(!((SocialResponsabilityApp) getApplicationContext()).getAnonymousUser()) {
             if (userEmail.isEmpty() || userId.isEmpty() || accessToken.isEmpty()) {
-                Intent intent = new Intent(this, LoginActivity.class);
+                Intent intent = new Intent(this, WelcomeActivity.class);
                 startActivity(intent);
-            } else {
+                finish();
+            } else if(appContext.getUser() == null){
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "aplication/json");
                 headers.put("Authorization", "Bearer " + accessToken);
@@ -126,16 +118,18 @@ public class MainActivity extends AppCompatActivity{
                             UserModel userModel = response.body().getData();
                             appContext.setUser(new UserModel(userModel));
                         } else {
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
                             startActivity(intent);
+                            finish();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<AuthorizationModel> call, Throwable t) {
                         Log.d(TAG, "onFailure: " + t.getMessage());
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 });
             }

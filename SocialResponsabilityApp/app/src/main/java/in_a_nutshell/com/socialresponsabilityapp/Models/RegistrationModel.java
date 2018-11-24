@@ -1,59 +1,34 @@
 package in_a_nutshell.com.socialresponsabilityapp.Models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
+import java.io.Serializable;
 import java.util.UUID;
 
-public class UserModel{
-
-    @SerializedName("Id")
-    @Expose
+public class RegistrationModel implements Serializable {
     private UUID id;
-
-    @SerializedName("FullName")
-    @Expose
     private String fullName;
-
-    @SerializedName("Latitude")
-    @Expose
+    private String email;
     private double latitude;
-
-    @SerializedName("Longitude")
-    @Expose
     private double longitude;
-
-    @SerializedName("Radius")
-    @Expose
-    private double radius;
-
-    @SerializedName("Age")
-    @Expose
+    private int radius;
     private int age;
-
-    @SerializedName("Gender")
-    @Expose
     private int gender;
-
-    @SerializedName("ProfilePicture")
-    @Expose
+    private String password;
     private String profilePicture;
 
-    @SerializedName("Issues")
-    @Expose
-    private List<IssueModel> issues;
+    public RegistrationModel() {
+    }
 
-    public UserModel(UserModel userModel) {
-        this.id = userModel.id;
-        this.fullName = userModel.fullName;
-        this.latitude = userModel.latitude;
-        this.longitude = userModel.longitude;
-        this.radius = userModel.radius;
-        this.age = userModel.age;
-        this.gender = userModel.gender;
-        this.profilePicture = userModel.profilePicture;
-        this.issues = userModel.issues;
+    public RegistrationModel(UUID id, String fullName, String email, double latitude, double longitude, int radius, int age, int gender, String password, String profilePicture) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.radius = radius;
+        this.age = age;
+        this.gender = gender;
+        this.password = password;
+        this.profilePicture = profilePicture;
     }
 
     public UUID getId() {
@@ -72,6 +47,14 @@ public class UserModel{
         this.fullName = fullName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public double getLatitude() {
         return latitude;
     }
@@ -88,11 +71,11 @@ public class UserModel{
         this.longitude = longitude;
     }
 
-    public double getRadius() {
+    public int getRadius() {
         return radius;
     }
 
-    public void setRadius(double radius) {
+    public void setRadius(int radius) {
         this.radius = radius;
     }
 
@@ -112,6 +95,14 @@ public class UserModel{
         this.gender = gender;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getProfilePicture() {
         return profilePicture;
     }
@@ -120,26 +111,19 @@ public class UserModel{
         this.profilePicture = profilePicture;
     }
 
-    public List<IssueModel> getIssues() {
-        return issues;
-    }
-
-    public void setIssues(List<IssueModel> issues) {
-        this.issues = issues;
-    }
-
     @Override
     public String toString() {
-        return "UserModel{" +
+        return "RegistrationModel{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 ", radius=" + radius +
                 ", age=" + age +
                 ", gender=" + gender +
+                ", password='" + password + '\'' +
                 ", profilePicture='" + profilePicture + '\'' +
-                ", issues=" + issues +
                 '}';
     }
 }

@@ -20,7 +20,6 @@ public class AuthentificationUtils {
 
         final boolean isAuthorized = false;
 
-
         return isAuthorized;
     }
 }

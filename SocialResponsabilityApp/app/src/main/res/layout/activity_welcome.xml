@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.WelcomeActivity"
+    android:padding="48dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="32dp"
+        android:weightSum="100"
+        app:layout_constraintBottom_toTopOf="@+id/buttonsWrapper"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_text"
+            android:fontFamily="@font/segoeuib"
+            android:lineSpacingMultiplier="0.9"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="36sp"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:textSize="18sp"
+            android:layout_marginTop="18dp"
+            android:lineSpacingMultiplier="1.1"
+            android:textColor="@color/colorDarkGray"
+            android:fontFamily="@font/segoe_ui_semilight_610"
+            android:text="@string/lorem_ipsum_short"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonsWrapper"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:weightSum="100">
+
+            <Button
+                android:id="@+id/logInBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="Log in"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_margin="4dp"
+                android:textColor="@android:color/white"
+                android:layout_weight="100"
+                android:background="@drawable/btn_rounded_color_primary_dark" />
+
+            <Button
+                android:id="@+id/anonymousBtn"
+                android:layout_width="60dp"
+                android:background="@drawable/btn_rounded_color_primary_dark"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/registerBtn"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_height="60dp"
+            android:text="Become a member"
+            android:elevation="4dp"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_rounded_color_primary"
+            android:textColor="@android:color/white"
+            />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

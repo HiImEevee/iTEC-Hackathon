@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">SocialResponsabilityApp</string>
+
+    <string name="welcome_text">Welcome to Whistler</string>
+
+    <string name="log_in_text">Sign in\nto continue</string>
+    <string name="log_in_button">Sign me in</string>
+
+    <string name="register_text">Become\na Whistler</string>
+    <string name="register_button">Get started</string>
+
+    <!--Lorem Ipsum-->
+    <string name="lorem_ipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet ante mollis, molestie nulla vel, semper augue. Praesent posuere pharetra nulla, nec mattis orci dignissim in.</string>
+    <string name="lorem_ipsum_short">Lorem ipsum dolor sit amet, consectetr adpiscing elit.</string>
+
+    <!--GET/POST variable names-->
+    <string name="access_token">access_token</string>
+    <string name="error_description">error_description</string>
+    <string name="user_data">userData</string>
+
+    <!--Shared Preferences parameters-->
+    <string name="preferences_email">email</string>
+    <string name="preferences_id">id</string>
+    <string name="preferences_token">token</string>
 </resources>

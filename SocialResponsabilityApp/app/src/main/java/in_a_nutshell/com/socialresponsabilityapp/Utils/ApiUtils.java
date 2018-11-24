@@ -10,9 +10,12 @@ import in_a_nutshell.com.socialresponsabilityapp.Models.IssueModel;
 import in_a_nutshell.com.socialresponsabilityapp.Models.UserModel;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -27,9 +30,17 @@ public interface ApiUtils {
             @Query("email") String email
     );
 
-    @Headers("Content-Type: application/json")
+    @Headers("Content-Type: aplication/json")
     @GET("Issue/GetAll")
     Call<List<IssueModel>> getIssues();
+
+    @POST("Token")
+    @FormUrlEncoded
+    Call<ResponseBody> getToken(
+            @Field("username") String email,
+            @Field("password") String password,
+            @Field("grant_type") String grant_type
+    );
 
 
 }

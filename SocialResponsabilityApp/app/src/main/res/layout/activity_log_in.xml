@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.RegisterActivity">
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_rounded_color_primary_dark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        app:layout_constraintTop_toBottomOf="@id/backBtn"
+        app:layout_constraintBottom_toTopOf="@+id/buttonsWrapper">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/log_in_text"
+            android:fontFamily="@font/seguisb"
+            android:lineSpacingMultiplier="0.9"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="32sp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:hintTextAppearance="@style/FloatingText">
+
+            <EditText
+                android:id="@+id/usernameET"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textSize="16sp"
+                android:theme="@style/EditTextTheme"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:hintTextAppearance="@style/FloatingText">
+
+            <EditText
+                android:id="@+id/passwordET"
+                android:inputType="textPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:textSize="16sp"
+                android:theme="@style/EditTextTheme"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonsWrapper"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_margin="44dp"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/logInBtn"
+            android:layout_margin="4dp"
+            android:background="@drawable/btn_rounded_color_primary_dark"
+            android:textColor="@android:color/white"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="@string/log_in_button"
+            android:textAllCaps="false"
+            android:layout_weight="80"
+            />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
