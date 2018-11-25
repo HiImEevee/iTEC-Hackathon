@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -44,7 +45,7 @@ public class LogInActivity extends AppCompatActivity {
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button logInButton;
-    private Button backButton;
+    private ImageButton backButton;
 
     //Shared Preferences
     SharedPreferences mPreferences;
@@ -68,6 +69,9 @@ public class LogInActivity extends AppCompatActivity {
         initializeRetrofit();
         usernameEditText.setText(mPreferences.getString("username", ""));
         passwordEditText.setText(mPreferences.getString("password", ""));
+
+        usernameEditText.setText("andrei.matei2010@yahoo.com");
+        passwordEditText.setText("andrei2001");
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

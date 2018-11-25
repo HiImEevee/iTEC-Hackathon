@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import in_a_nutshell.com.socialresponsabilityapp.Models.RegistrationModel;
 import in_a_nutshell.com.socialresponsabilityapp.Models.UserModel;
@@ -28,9 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
     //Widgets
     private EditText usernameEditText;
     private EditText passwordEditText;
-    private EditText confirmPassEditText;
+    private EditText fullNameEditText;
     private Button registerButton;
-    private Button backButton;
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,14 @@ public class RegisterActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameET);
         passwordEditText = findViewById(R.id.passwordET);
         registerButton = findViewById(R.id.registerBtn);
-        confirmPassEditText = findViewById(R.id.confirmPassET);
+        fullNameEditText = findViewById(R.id.fullnameET);
         backButton = findViewById(R.id.backBtn);
 
         appContext = (SocialResponsabilityApp) getApplicationContext();
 
         usernameEditText.setText("andrei.matei2010@yahoo.com");
         passwordEditText.setText("andrei2001");
-        confirmPassEditText.setText("andrei2001");
+        fullNameEditText.setText("Matei Andrei");
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +65,11 @@ public class RegisterActivity extends AppCompatActivity {
                 registerButton.setEnabled(false);
                 String username = usernameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-                String confPassword = confirmPassEditText.getText().toString();
-                if(username.isEmpty()) {
+                String fullName = fullNameEditText.getText().toString();
+                if(fullName.isEmpty()) {
+                    fullNameEditText.setError("Cannot leave this field empty");
+                    registerButton.setEnabled(true);
+                } else if(username.isEmpty()) {
                     usernameEditText.setError("The email address cannot be empty");
                     registerButton.setEnabled(true);
                 } else if(!username.contains("@") || !username.substring(username.indexOf("@")).contains(".")) {
@@ -74,16 +78,11 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if(password.isEmpty()) {
                     passwordEditText.setError("The password cannot be empty");
                     registerButton.setEnabled(true);
-                } else if(confPassword.isEmpty()) {
-                    confirmPassEditText.setError("Please confirm password");
-                    registerButton.setEnabled(true);
-                } else if(!confPassword.equals(password)) {
-                    passwordEditText.setError("Passwords don't match");
-                    confirmPassEditText.setError("Passwords don't match");
                 } else {
                     RegistrationModel registrationModel = new RegistrationModel();
                     registrationModel.setEmail(username);
                     registrationModel.setPassword(password);
+                    registrationModel.setFullName(fullName);
                     Intent intent = new Intent(RegisterActivity.this, RegistrationFragmentsActivity.class);
                     intent.putExtra("registration_obj", registrationModel);
                     startActivity(intent);

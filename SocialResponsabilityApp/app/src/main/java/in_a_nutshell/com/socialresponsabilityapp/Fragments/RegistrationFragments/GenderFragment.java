@@ -1,109 +1,80 @@
 package in_a_nutshell.com.socialresponsabilityapp.Fragments.RegistrationFragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import in_a_nutshell.com.socialresponsabilityapp.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link GenderFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link GenderFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class GenderFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    //Vars
+    private static final int GENDER_MALE = 1;
+    private static final int GENDER_FEMALE = 0;
+    private int genderSelcted = GENDER_MALE;
 
-    private OnFragmentInteractionListener mListener;
+    //Widgets
+    private LinearLayout femaleCardView;
+    private LinearLayout maleCardView;
+    private TextView maleTextView;
+    private TextView femaleTextView;
+    private ImageView femaleImageView;
+    private ImageView maleImageView;
 
     public GenderFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment GenderFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static GenderFragment newInstance(String param1, String param2) {
-        GenderFragment fragment = new GenderFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gender, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_gender, container, false);
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+        femaleCardView = view.findViewById(R.id.femaleCardView);
+        femaleImageView = view.findViewById(R.id.femaleIV);
+        femaleTextView = view.findViewById(R.id.femaleTV);
 
-/*    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }*/
+        maleCardView = view.findViewById(R.id.maleCardView);
+        maleImageView = view.findViewById(R.id.maleIV);
+        maleTextView = view.findViewById(R.id.maleTV);
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+        maleCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(genderSelcted == GENDER_FEMALE) {
+                    genderSelcted = GENDER_MALE;
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+                    maleCardView.setBackground(getResources().getDrawable(R.drawable.btn_rounded_stroke_color_primary));
+                    maleImageView.setImageResource(R.drawable.ic_male_selected);
+                    maleTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                    femaleCardView.setBackground(null);
+                    femaleImageView.setImageResource(R.drawable.ic_female_unselected);
+                    femaleTextView.setTextColor(getResources().getColor(R.color.colorLightGray));
+                }
+            }
+        });
+        femaleCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(genderSelcted == GENDER_MALE) {
+                    genderSelcted = GENDER_FEMALE;
+
+                    femaleCardView.setBackground(getResources().getDrawable(R.drawable.btn_rounded_stroke_color_primary));
+                    femaleImageView.setImageResource(R.drawable.ic_female_selected);
+                    femaleTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+                    maleCardView.setBackground(null);
+                    maleImageView.setImageResource(R.drawable.ic_male_unselected);
+                    maleTextView.setTextColor(getResources().getColor(R.color.colorLightGray));
+                }
+            }
+        });
+        return view;
     }
 }

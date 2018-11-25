@@ -6,19 +6,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import in_a_nutshell.com.socialresponsabilityapp.Models.IssueModel;
 import in_a_nutshell.com.socialresponsabilityapp.R;
+import in_a_nutshell.com.socialresponsabilityapp.Utils.UniversalImageLoader;
 
 public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecyclerViewAdapter.ViewHolder> {
 
     private List<IssueModel> mIssuesList;
+    private Context mContext;
 
-    public CustomRecyclerViewAdapter(List<IssueModel> mIssuesList) {
+    public CustomRecyclerViewAdapter(List<IssueModel> mIssuesList, Context mContext) {
         this.mIssuesList = mIssuesList;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -34,8 +44,12 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
         viewHolder.titleTextView.setText(issueModel.getTitle());
         viewHolder.descriptionTextView.setText(issueModel.getDescription());
-        viewHolder.longitudeTextView.setText(String.valueOf(issueModel.getLongitude()));
-        viewHolder.latitudeTextView.setText(String.valueOf(issueModel.getLatitude()));
+        viewHolder.usernameTextView.setText(issueModel.getCreator());
+
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
+        UniversalImageLoader.setImage((issueModel.getImages().size() == 0) ? "" : issueModel.getImages().get(0),
+                viewHolder.issuePhotoImageView, "" );
     }
 
     @Override
@@ -45,17 +59,18 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        public TextView usernameTextView;
+        public TextView dateTextView;
+        public ImageView issuePhotoImageView;
         public TextView titleTextView;
         public TextView descriptionTextView;
-        public TextView latitudeTextView;
-        public TextView longitudeTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.titleTextView = itemView.findViewById(R.id.titleTV);
+            this.titleTextView = itemView.findViewById(R.id.issueTitleTV);
             this.descriptionTextView = itemView.findViewById(R.id.descriptionTV);
-            this.latitudeTextView = itemView.findViewById(R.id.latitudeTV);
-            this.longitudeTextView = itemView.findViewById(R.id.longitudeTV);
+            this.usernameTextView = itemView.findViewById(R.id.usernameTV);
+            this.issuePhotoImageView = itemView.findViewById(R.id.issueImage);
         }
     }
 }

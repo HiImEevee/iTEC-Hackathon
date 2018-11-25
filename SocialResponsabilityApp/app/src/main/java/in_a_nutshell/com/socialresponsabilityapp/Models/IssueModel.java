@@ -50,7 +50,7 @@ public class IssueModel {
 
     @SerializedName("Comments")
     @Expose
-    private List<CommentModel> comments;
+    private List<CommenGettModel> comments;
 
     @SerializedName("Images")
     @Expose
@@ -59,7 +59,7 @@ public class IssueModel {
     public IssueModel() {
     }
 
-    public IssueModel(UUID id, String title, String description, double latitude, double longitude, int upVotes, int downVotes, long createdAt, UUID createdBy, String creator, List<CommentModel> comments, List<String> images) {
+    public IssueModel(UUID id, String title, String description, double latitude, double longitude, int upVotes, int downVotes, long createdAt, UUID createdBy, String creator, List<CommenGettModel> comments, List<String> images) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -164,11 +164,11 @@ public class IssueModel {
         this.creator = creator;
     }
 
-    public List<CommentModel> getComments() {
+    public List<CommenGettModel> getComments() {
         return comments;
     }
 
-    public void setComments(List<CommentModel> comments) {
+    public void setComments(List<CommenGettModel> comments) {
         this.comments = comments;
     }
 

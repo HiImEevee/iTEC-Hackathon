@@ -12,14 +12,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AuthentificationUtils {
+public class ApiHelpers {
 
-    private static final String TAG = "AuthentificationUtils";
+    private static final String TAG = "ApiHelpers";
 
-    public static Boolean isAuthorized(ApiUtils apiUtils, String userEmail) {
-
-        final boolean isAuthorized = false;
-
-        return isAuthorized;
-    }
 }
