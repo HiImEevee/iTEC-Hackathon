@@ -19,11 +19,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="153" />
-                            <entry key="outputName" value="ic_default_user" />
+                            <entry key="height" value="251" />
+                            <entry key="outputName" value="ic_logo" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\Matei Andrei\Desktop\Icons\default_user_picture.svg" />
-                            <entry key="width" value="153" />
+                            <entry key="sourceFile" value="C:\Users\Matei Andrei\Desktop\Icons\logo_icon.svg" />
+                            <entry key="width" value="373" />
                           </map>
                         </option>
                       </PersistentState>
