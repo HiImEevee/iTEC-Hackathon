@@ -19,7 +19,7 @@ import in_a_nutshell.com.socialresponsabilityapp.R;
 
 public class UniversalImageLoader {
 
-    private static final int defaultImage = R.drawable.ic_default_user;
+    private static final int defaultImage = R.drawable.ic_report_unselected;
     private Context mContext;
 
     public UniversalImageLoader(Context context) {

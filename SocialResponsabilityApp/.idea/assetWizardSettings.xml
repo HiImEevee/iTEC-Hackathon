@@ -19,11 +19,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="251" />
-                            <entry key="outputName" value="ic_logo" />
+                            <entry key="height" value="216" />
+                            <entry key="outputName" value="ic_accountless_pp" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\Matei Andrei\Desktop\Icons\logo_icon.svg" />
-                            <entry key="width" value="373" />
+                            <entry key="sourceFile" value="C:\Users\Matei Andrei\Desktop\Icons\accountless_pp.svg" />
+                            <entry key="width" value="196" />
                           </map>
                         </option>
                       </PersistentState>

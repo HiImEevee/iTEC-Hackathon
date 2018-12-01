@@ -44,6 +44,9 @@ public class UserModel{
     @Expose
     private List<IssueModel> issues;
 
+    public UserModel() {
+    }
+
     public UserModel(UserModel userModel) {
         this.id = userModel.id;
         this.fullName = userModel.fullName;

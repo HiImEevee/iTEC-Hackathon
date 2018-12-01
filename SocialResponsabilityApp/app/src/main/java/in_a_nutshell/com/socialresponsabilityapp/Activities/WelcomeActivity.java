@@ -7,7 +7,9 @@ import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
+import in_a_nutshell.com.socialresponsabilityapp.Models.UserModel;
 import in_a_nutshell.com.socialresponsabilityapp.R;
 import in_a_nutshell.com.socialresponsabilityapp.SocialResponsabilityApp;
 import in_a_nutshell.com.socialresponsabilityapp.Utils.ApiUtils;
@@ -23,7 +25,7 @@ public class WelcomeActivity extends AppCompatActivity{
     //Widgets
     private Button loginButton;
     private Button registerButton;
-    private Button anonymousButton;
+    private ImageButton anonymousButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class WelcomeActivity extends AppCompatActivity{
         loginButton = findViewById(R.id.logInBtn);
         registerButton = findViewById(R.id.registerBtn);
         anonymousButton = findViewById(R.id.anonymousBtn);
+
+        appContext = (SocialResponsabilityApp) getApplicationContext();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +58,9 @@ public class WelcomeActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 appContext.setAnonymousUser(true);
+                UserModel userModel = new UserModel();
+                userModel.setFullName("anonymous user");
+                appContext.setUser(userModel);
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
             }

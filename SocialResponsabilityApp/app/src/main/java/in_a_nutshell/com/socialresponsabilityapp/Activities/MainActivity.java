@@ -60,7 +60,11 @@ public class MainActivity extends AppCompatActivity{
 
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor mEditor = mPreferences.edit();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         initializeRetrofit();
         initializeUser();
     }
@@ -109,8 +113,7 @@ public class MainActivity extends AppCompatActivity{
         String userId = mPreferences.getString(getString(R.string.preferences_id), "");
         String accessToken = mPreferences.getString(getString(R.string.preferences_token), "");
         Log.d(TAG, "initializeUser: " + userId + ' ' + userEmail + ' ' + accessToken);
-        if(!((SocialResponsabilityApp) getApplicationContext()).getAnonymousUser()) {
-            if (userEmail.isEmpty() || userId.isEmpty() || accessToken.isEmpty()) {
+            if ((userEmail.isEmpty() || userId.isEmpty() || accessToken.isEmpty()) && !((SocialResponsabilityApp) getApplicationContext()).getAnonymousUser()) {
                 Intent intent = new Intent(this, WelcomeActivity.class);
                 startActivity(intent);
                 finish();
@@ -127,7 +130,6 @@ public class MainActivity extends AppCompatActivity{
                         if (response.body().getIsSuccessful() == true) {
                             UserModel userModel = response.body().getData();
                             appContext.setUser(new UserModel(userModel));
-                            initializeWidgets();
                         } else {
                             Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
                             startActivity(intent);
@@ -143,7 +145,9 @@ public class MainActivity extends AppCompatActivity{
                         finish();
                     }
                 });
+            } else {
+                initializeWidgets();
             }
-        }
+
     }
 }

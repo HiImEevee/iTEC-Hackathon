@@ -73,10 +73,13 @@
                 android:layout_weight="100"
                 android:background="@drawable/btn_rounded_color_primary_dark" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/anonymousBtn"
                 android:layout_width="60dp"
                 android:background="@drawable/btn_rounded_color_primary_dark"
+                android:src="@drawable/ic_accountless_pp"
+                android:scaleType="fitCenter"
+                android:padding="16dp"
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:textAllCaps="false"
